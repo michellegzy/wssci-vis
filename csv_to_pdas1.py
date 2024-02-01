@@ -22,14 +22,15 @@ plt.figure(figsize=(10, 6))
 for csv_file in csv_files:
     df = pd.read_csv(os.path.join(folder_path, csv_file))  # read the CSV file into a dataframe
     label_name = os.path.splitext(csv_file)[0].replace('_', ' ')  # format legend entries
-    if 'TGA [wt %] bio' in df.columns:
-        plt.plot(df['Temperature [K]'], df['TGA [wt %] bio'], label=label_name, marker='.')  # plot data from the dataframe
+    if 'sim' in df.columns:
+        plt.plot(df['Temperature [K]'], df['sim'], label=label_name, color='tab:purple')
     if 'TGA [wt %] bio, df' in df.columns:
         plt.plot(df['Temperature [K]'], df['TGA [wt %] bio, df'], label=label_name, marker='.', markevery=10)
+    if 'TGA [wt %] bio' in df.columns:
+        plt.plot(df['Temperature [K]'], df['TGA [wt %] bio'], label=label_name, marker='.')  # plot data from the dataframe
     if 'TGA [wt %] alg' in df.columns:
         plt.plot(df['Temperature [K]'], df['TGA [wt %] alg'], label=label_name, marker='x')
-    if 'sim' in df.columns:
-        plt.plot(df['Temperature [K]'], df['sim'], label=label_name)  #, marker='o')  #label='mark',
+      #, marker='o')  #label='mark',
 
 # format
 plt.xlabel('Temperature [K]')
@@ -55,10 +56,11 @@ plt.figure(figsize=(10, 6))
 for csv_file in csv_files:
     df = pd.read_csv(os.path.join(folder_path_2, csv_file))  # read the CSV file into a dataframe
     label_name = os.path.splitext(csv_file)[0]  #.replace('_', ' ')  # format legend entries
+    if 'TGA [wt %]' in df.columns:
+        plt.plot(df['Temperature [K]'], df['TGA [wt %]'], color='tab:purple', label=label_name)
     if 'mass %' in df.columns:
         plt.plot(df['T [K]'], df['mass %'], label=label_name, linestyle='--')  # plot data from the dataframe
-    if 'TGA [wt %]' in df.columns:
-        plt.plot(df['Temperature [K]'], df['TGA [wt %]'], label=label_name)
+
 
 # format
 plt.xlabel('Temperature [K]')
@@ -84,10 +86,11 @@ plt.figure(figsize=(10, 6))
 for csv_file in csv_files:
     df = pd.read_csv(os.path.join(folder_path_3, csv_file))  # read the CSV file into a dataframe
     label_name = os.path.splitext(csv_file)[0]  #.replace('_', ' ')  # format legend entries
-    if 'TGA [wt %]' in df.columns:
-        plt.plot(df['Temperature [K]'], df['TGA [wt %]'], label=label_name)  # plot data from the dataframe
     if 'TGA [wt %], creck' in df.columns:
         plt.plot(df['Temperature [K]'], df['TGA [wt %], creck'], label=label_name, linestyle='--')
+    if 'TGA [wt %]' in df.columns:
+        plt.plot(df['Temperature [K]'], df['TGA [wt %]'], label=label_name, color='tab:purple')  # plot data from the dataframe
+
 
 # format
 plt.xlabel('Temperature [K]')
@@ -113,10 +116,10 @@ plt.figure(figsize=(10, 6))
 for csv_file in csv_files:
     df = pd.read_csv(os.path.join(folder_path_3, csv_file))  # read the CSV file into a dataframe
     label_name = os.path.splitext(csv_file)[0]  #.replace('_', ' ')  # format legend entries
-    if 'neg DTG' in df.columns:
-        plt.plot(df['T [K]'], df['neg DTG'], label=label_name)  # plot data from the dataframe
     if 'negative DTG' in df.columns:
         plt.plot(df['T [K]'], df['negative DTG'], label=label_name, linestyle='--')
+    if 'neg DTG' in df.columns:
+        plt.plot(df['T [K]'], df['neg DTG'], label=label_name, color='tab:purple')  # plot data from the dataframe
 
 # format
 plt.xlabel('Temperature [K]')
